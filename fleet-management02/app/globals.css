@@ -1,0 +1,294 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 20% 98%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222 71% 40%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 199 95% 49%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+
+    /* Status colors */
+    --success: 142 71% 45%;
+    --warning: 38 92% 50%;
+    --danger: 0 84% 60%;
+
+    /* Data visualization palette */
+    --viz-blue: 222 71% 40%;
+    --viz-emerald: 152 76% 40%;
+    --viz-amber: 38 92% 50%;
+    --viz-rose: 336 80% 58%;
+
+    /* Sidebar variables */
+    --sidebar-width: 240px;
+    --sidebar-background: 222 71% 40%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 210 40% 98%;
+    --sidebar-primary-foreground: 222.2 84% 4.9%;
+    --sidebar-accent: 217.2 32.6% 17.5%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217.2 32.6% 17.5%;
+    --sidebar-ring: 224.3 76.3% 48%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+
+    /* Sidebar variables */
+    --sidebar-background: 222.2 84% 4.9%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 210 40% 98%;
+    --sidebar-primary-foreground: 222.2 84% 4.9%;
+    --sidebar-accent: 217.2 32.6% 17.5%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217.2 32.6% 17.5%;
+    --sidebar-ring: 224.3 76.3% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-inter);
+    font-size: 16px;
+  }
+
+  .font-mono {
+    font-family: var(--font-roboto-mono);
+  }
+}
+
+/* Status colors */
+.status-active {
+  @apply bg-[#10B981];
+}
+
+.status-idle {
+  @apply bg-[#F59E0B];
+}
+
+.status-maintenance {
+  @apply bg-[#EF4444];
+}
+
+/* Map styles */
+.mapboxgl-map {
+  @apply rounded-lg;
+}
+
+/* Data Grid styles */
+.data-grid {
+  @apply w-full border rounded-md overflow-hidden;
+}
+
+/* Rewriting the problematic class without using @apply for multiple classes */
+.data-grid-header {
+  background-color: #f9fafb;
+  border-bottom-width: 1px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.data-grid-header th {
+  @apply px-4 py-3 text-left text-sm font-medium text-muted-foreground;
+}
+
+.data-grid-row {
+  @apply border-b h-12;
+}
+
+.data-grid-row:nth-child(even) {
+  @apply bg-[#F9FAFB];
+}
+
+.data-grid-row:hover {
+  @apply bg-[#EFF6FF];
+}
+
+.data-grid-row.selected {
+  @apply border-l-4 border-l-[#1E40AF];
+}
+
+.data-grid-cell {
+  @apply px-4 py-3 text-sm;
+}
+
+/* Form styles - rewritten without @apply to avoid syntax errors */
+.form-input {
+  height: 2.5rem; /* h-10 */
+  border-width: 1px; /* border */
+  border-color: #e5e7eb; /* border-[#E5E7EB] */
+  border-radius: 0.375rem; /* rounded-md */
+  padding-left: 0.75rem; /* px-3 */
+  padding-right: 0.75rem; /* px-3 */
+}
+
+.form-input:focus {
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+  --tw-ring-color: #3b82f6; /* focus:ring-[#3B82F6] */
+  --tw-ring-opacity: 1;
+  border-color: transparent; /* focus:border-transparent */
+}
+
+.form-input.error {
+  border-color: #ef4444; /* border-[#EF4444] */
+}
+
+.form-input.error:focus {
+  --tw-ring-color: #ef4444; /* focus:ring-[#EF4444] */
+}
+
+.form-input.success {
+  border-color: #10b981; /* border-[#10B981] */
+}
+
+/* Button styles - rewritten without @apply to avoid syntax errors */
+.btn-primary {
+  background-color: #1e40af; /* bg-[#1E40AF] */
+  color: white; /* text-white */
+  height: 2.5rem; /* h-10 */
+  padding-left: 1rem; /* px-4 */
+  padding-right: 1rem; /* px-4 */
+  border-radius: 0.375rem; /* rounded-md */
+}
+
+.btn-primary:hover {
+  background-color: #1e3a8a; /* hover:bg-[#1E3A8A] */
+}
+
+.btn-secondary {
+  background-color: white; /* bg-white */
+  color: #1e40af; /* text-[#1E40AF] */
+  border-width: 1px; /* border */
+  border-color: #1e40af; /* border-[#1E40AF] */
+  height: 2.5rem; /* h-10 */
+  padding-left: 1rem; /* px-4 */
+  padding-right: 1rem; /* px-4 */
+  border-radius: 0.375rem; /* rounded-md */
+}
+
+.btn-secondary:hover {
+  background-color: #eff6ff; /* hover:bg-[#EFF6FF] */
+}
+
+.btn-destructive {
+  background-color: #ef4444; /* bg-[#EF4444] */
+  color: white; /* text-white */
+  height: 2.5rem; /* h-10 */
+  padding-left: 1rem; /* px-4 */
+  padding-right: 1rem; /* px-4 */
+  border-radius: 0.375rem; /* rounded-md */
+}
+
+.btn-destructive:hover {
+  background-color: #dc2626; /* hover:bg-[#DC2626] */
+}
+
+/* Badge styles - rewritten without @apply to avoid syntax errors */
+.badge-approved {
+  background-color: #10b981; /* bg-[#10B981] */
+  color: white; /* text-white */
+  font-size: 0.75rem; /* text-xs */
+  padding-left: 0.5rem; /* px-2 */
+  padding-right: 0.5rem; /* px-2 */
+  padding-top: 0.25rem; /* py-1 */
+  padding-bottom: 0.25rem; /* py-1 */
+  border-radius: 9999px; /* rounded-full */
+}
+
+.badge-pending {
+  background-color: #f59e0b; /* bg-[#F59E0B] */
+  color: white; /* text-white */
+  font-size: 0.75rem; /* text-xs */
+  padding-left: 0.5rem; /* px-2 */
+  padding-right: 0.5rem; /* px-2 */
+  padding-top: 0.25rem; /* py-1 */
+  padding-bottom: 0.25rem; /* py-1 */
+  border-radius: 9999px; /* rounded-full */
+}
+
+.badge-rejected {
+  background-color: #ef4444; /* bg-[#EF4444] */
+  color: white; /* text-white */
+  font-size: 0.75rem; /* text-xs */
+  padding-left: 0.5rem; /* px-2 */
+  padding-right: 0.5rem; /* px-2 */
+  padding-top: 0.25rem; /* py-1 */
+  padding-bottom: 0.25rem; /* py-1 */
+  border-radius: 9999px; /* rounded-full */
+}
+
+/* Calendar styles */
+.rbc-calendar {
+  @apply rounded-lg bg-card text-card-foreground;
+}
+
+.rbc-toolbar {
+  @apply p-4 border-b border-border;
+}
+
+.rbc-toolbar button {
+  @apply bg-secondary text-secondary-foreground hover:bg-primary hover:text-primary-foreground;
+}
+
+.rbc-toolbar button.rbc-active {
+  @apply bg-primary text-primary-foreground;
+}
+
+.rbc-event {
+  @apply bg-primary text-primary-foreground rounded-md;
+}
+
+.rbc-event.maintenance {
+  @apply bg-red-500;
+}
+
+.rbc-event.delivery {
+  @apply bg-green-500;
+}
+
+.rbc-event.pickup {
+  @apply bg-amber-500;
+}
+
